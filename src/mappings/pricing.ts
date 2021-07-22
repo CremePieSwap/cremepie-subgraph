@@ -3,17 +3,16 @@ import { Pair, Token, Bundle } from '../types/schema'
 import { BigDecimal } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, ONE_BD } from './helpers'
 
-const WETH_ADDRESS = '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619'
-const USDC_WETH_PAIR = '0x853ee4b2a13f8a742d64c8f088be7ba2131f670d' // created 10008355
-const DAI_WETH_PAIR = '0x4a35582a710e1f4b2030a3f826da20bfb6703c09' // created block 10042267
-const USDT_WETH_PAIR = '0xf6422b997c7f54d1c6a6e103bcb1499eea0a7046' // created block 10093341
+const WMATIC_ADDRESS = '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270'
+const USDC_WMATIC_PAIR = '0x29a92b95be45d5bdd638b749798f0fee107fdbc7'
+const USDT_WMATIC_PAIR = '0x0B23bd7D56160272049C6b33e2d4D575B6bE46ae'
 
 
 export function getEthPriceInUSD(): BigDecimal {
   //For now we will only use USDC_WETH pair for ETH prices
-  let usdcPair = Pair.load(USDC_WETH_PAIR);
-  if (usdcPair !== null) {
-    return usdcPair.token0Price
+  let usdtPair = Pair.load(USDT_WMATIC_PAIR);
+  if (usdtPair !== null) {
+    return usdtPair.token0Price
   }
   else {
     return ZERO_BD
